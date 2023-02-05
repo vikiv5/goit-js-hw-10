@@ -7,9 +7,9 @@ import Notiflix from "notiflix";
 const DEBOUNCE_DELAY = 300;
 
 const inputEL = document.getElementById ("search-box") ;
-const countryCard = document.querySelector ("country-info");
+const countryCard = document.querySelector (".country-info");
 
-const countryList = document.querySelector ("country-list");
+const countryList = document.querySelector (".country-list");
 
 inputEL.addEventListener ("input", debounce (onSubmit,DEBOUNCE_DELAY ))
 
@@ -69,12 +69,9 @@ function createCard (country) {
 
 function createList (country) {
         const markup = country.map(name => 
-        `<div class = "list-country">
-        <img src = "${name.flags.png}" alt = "flag country" width = "50px" height = "50px"> <h2 class = "countries"> ${country.name.official}</h2> 
-        </div>
-        `)
-        .join("");
-
+            `<li class='list-elem'>
+            <p><img src='${name.flags.svg}' alt='flag' width='30' class='country-flag'/>${name.name.common}<p>
+            </li>`).join('');
          countryList.innerHTML = markup;   
         }
     
