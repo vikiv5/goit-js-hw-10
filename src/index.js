@@ -48,7 +48,6 @@ countries.fetchCountries(inputValue).then(country => {
    Notiflix.Notify.failure ("Oops, there is no country with that name");
    countryCard.innerHTML= "" ;
    countryList.innerHTML= "";
-    return ;
     }
 });
 }
