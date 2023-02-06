@@ -17,4 +17,15 @@ body {
   padding: 8px;
   max-width: 320px;
   margin-bottom: 16px;
+  
+}
+
+.country-list {
+  list-style: none;
+  
+}
+
+.country-flag {
+  margin-right: 15px;
+  
 }

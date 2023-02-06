@@ -57,7 +57,7 @@ function createCard ({name,population,capital,languages,flags}) {
     
             const card = `
       <div>
-      <img src = "${flags.png}" alt = "flag country" width = "100px" height = "100px"> 
+      <img src = "${flags.png}" alt = "flag country" width = "200px" height = "100px"> 
       <h1> ${name.official}</h1> 
       <p> <span class = "info-country"> Capital: </span> ${capital} </p>
       <p> <span class = "info-country"> Population: </span> ${population} </p>
@@ -72,7 +72,7 @@ function createCard ({name,population,capital,languages,flags}) {
 function createList (country) {
         const markup = country.map(name => 
             `<li class='list-elem'>
-            <p><img src='${name.flags.svg}' alt='flag' width='30' class='country-flag'/>${name.name.common}<p>
+            <p><img src='${name.flags.svg}' alt='flag' width='50' class='country-flag'/>${name.name.common}<p>
             </li>`).join('');
          countryList.innerHTML = markup;   
         }
