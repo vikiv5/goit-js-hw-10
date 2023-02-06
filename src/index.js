@@ -16,11 +16,11 @@ inputEL.addEventListener ("input", debounce (onSubmit,DEBOUNCE_DELAY ))
 function onSubmit (e) { 
     e.preventDefault ();
 
-const inputValue  = e.target.value.trim ()
+const inputValue = e.target.value.trim ()
 if (inputValue === "") {
 
-countryCard.innerHTML= "";
-countryList.innerHTML= "";
+countryCard.innerHTML = "";
+countryList.innerHTML = "";
 
 return ;
 }
@@ -30,21 +30,20 @@ countries.fetchCountries(inputValue).then(country => {
     if (country.length === 1){
        createCard(country[0]);
         countryList.innerHTML= "";
-        
+        return;
     }
 
-    else if (country.length>=2 && country.length <= 10){
+    if (country.length>=2 && country.length <= 10){
    createList(country);
-    return; 
 
     }
-    else if (country.length >10){
+    if  (country.length >10){
         Notiflix.Notify.failure ("Too many matches found. Please enter a more specific name.")
         countryList.innerHTML = ""
-        return ;
+        //return ;
     }
 
-   else if (country.status === 404){
+   if  (country.status === 404){
    Notiflix.Notify.failure ("Oops, there is no country with that name");
    countryCard.innerHTML= "" ;
    countryList.innerHTML= "";
@@ -52,16 +51,20 @@ countries.fetchCountries(inputValue).then(country => {
 });
 }
 
+function createCard ({name,population,capital,languages,flags}) {
 
-function createCard (country) {
-
-    const allLanguage = Object.values(country.languages);
-
-            const card = `<h2><img src='${country.flags.svg}' alt='flag' width='30' class='country-flag'/>${country.name.common}</h2>
-            <p>Capital: ${country.capital}</p>
-            <p>Population: ${country.population}</p>
-            <p>Languages: ${allLanguage}</p>
-            `;
+    const allLanguage = Object.values(languages)
+    
+            const card = `
+      <div>
+      <img src = "${flags.png}" alt = "flag country" width = "100px" height = "100px"> 
+      <h1> ${name.official}</h1> 
+      <p> <span class = "info-country"> Capital: </span> ${capital} </p>
+      <p> <span class = "info-country"> Population: </span> ${population} </p>
+      <p> <span class = "info-country"> Languages: </span> ${allLanguage} </p>
+     
+     </div>
+     `;
     
      countryCard.innerHTML = card ;
     }
